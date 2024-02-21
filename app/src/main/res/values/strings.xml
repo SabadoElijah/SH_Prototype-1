@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SleepHaven_prototype</string>
+    <string name="welcome">Welcome To Sleep Haven</string>
+    <string name="email">Email\n</string>
+    <string name="password">Password\n</string>
+    <string name="Login">Login\n</string>
+    <string name="Register">Register to Sleep Haven\n</string>
+    <string name="register">Register\n</string>
+    <string name="click_to_login">Click To Login\n</string>
+    <string name="click_to_register">Click To Register</string>
+    <string name="Logout">Logout</string>
+</resources>
