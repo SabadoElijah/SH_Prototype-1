@@ -25,7 +25,7 @@ class Login : AppCompatActivity() {
         super.onStart()
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            val intent = Intent(this@Login, MainActivity::class.java)
+            val intent = Intent(this@Login, NavBar::class.java)
             startActivity(intent)
             finish()
         }
@@ -76,7 +76,7 @@ class Login : AppCompatActivity() {
                             "Login Successfully.",
                             Toast.LENGTH_SHORT,
                         ).show()
-                        val intent = Intent(this@Login, MainActivity::class.java)
+                        val intent = Intent(this@Login, NavBar::class.java)
                         startActivity(intent)
                         finish()
                         val user = auth.currentUser

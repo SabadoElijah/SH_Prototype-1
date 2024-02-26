@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">SleepHaven_prototype</string>
     <string name="welcome">Welcome To Sleep Haven</string>
-    <string name="email">Email\n</string>
-    <string name="password">Password\n</string>
-    <string name="Login">Login\n</string>
-    <string name="Register">Register to Sleep Haven\n</string>
-    <string name="register">Register\n</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="Login">Login</string>
+    <string name="Register">Register to Sleep Haven</string>
+    <string name="register">Register</string>
     <string name="click_to_login">Click To Login\n</string>
     <string name="click_to_register">Click To Register</string>
     <string name="Logout">Logout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
