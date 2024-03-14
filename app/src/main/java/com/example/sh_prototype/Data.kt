@@ -71,8 +71,9 @@ class Data : Fragment() {
                 Log.e("DataListener", "Error fetching BPM data: ${error.message}")
             }
         }
-        database.orderByKey().limitToLast(1).addListenerForSingleValueEvent(valueListener)
+        database.addValueEventListener(valueListener)
     }
+
 
 
     companion object {
