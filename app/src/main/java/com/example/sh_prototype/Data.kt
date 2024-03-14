@@ -1,6 +1,7 @@
 package com.example.sh_prototype
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,22 +46,34 @@ class Data : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_data, container, false)
+        binding = FragmentDataBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    private fun databaseListener(){
-        database = FirebaseDatabase.getInstance().getReference()
-        val postListener = object : ValueEventListener{
+
+    private fun databaseListener() {
+        database = FirebaseDatabase.getInstance().getReference("MAX30102/BPM")
+        val valueListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val bpm = snapshot.child("MAX30102/BPM").value
-                binding.bpmData.setText(bpm.toString())
-            }
-            override fun onCancelled(error: DatabaseError) {
+                Log.d("DataListener", "Snapshot received: $snapshot")
+                val latestBPM = snapshot.children.lastOrNull()?.value
+                Log.d("DataListener", "Latest BPM value: $latestBPM")
+                if (latestBPM != null) {
+                    // Update UI with the latest BPM value
+                    activity?.runOnUiThread {
+                        binding.bpmData.text = latestBPM.toString()
+                    }
+                }
             }
 
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+                Log.e("DataListener", "Error fetching BPM data: ${error.message}")
+            }
         }
-        database.addValueEventListener(postListener)
+        database.orderByKey().limitToLast(1).addListenerForSingleValueEvent(valueListener)
     }
+
 
     companion object {
         /**
